@@ -23,6 +23,29 @@ This is the private repository containing the full, unlocked client-side Chrome 
 
 ---
 
+## 🔑 Key Generator & Vercel Env Configuration
+
+Your licensing keys are secure because the generation script validates a secret admin key that is **never** stored inside the client-side extension. Instead, it is configured directly on your backend.
+
+### ⚙️ Vercel Environment Configuration
+* Your Admin password is set as an Environment Variable named **`ADMIN_SECRET_KEY`** inside your Vercel Project Dashboard.
+* **How to change it**:
+  1. Go to your Vercel Dashboard and select the project: `omni-licensing-backend`.
+  2. Navigate to **Settings** -> **Environment Variables**.
+  3. Look for the variable `ADMIN_SECRET_KEY`. You can edit this value or see what it is set to.
+  4. If you change it, Vercel will automatically redeploy the backend and make the new password active instantly.
+
+### 🛠️ Creating Client Activation Codes
+1. Visit the live **[Admin Key Generator Portal](https://omni-licensing-backend.vercel.app)**.
+2. In the **Admin Secret Key** field, type your custom password (set in the Vercel `ADMIN_SECRET_KEY` variable).
+3. Under **Licensing Plan**, select the plan the customer purchased (Silver, Gold, Diamond, Elite, Premium Elite).
+4. The validity days and credits limits will auto-calculate according to your plans checklist, but you can adjust them manually if needed (e.g. for custom orders).
+5. Click **⚡ Generate Activation Code**.
+6. If the password matches, the backend will return a unique activation code (e.g., `OMNI_XXXXXX_XXXXXX`).
+7. Copy the key and send it to the customer. When they paste it in their extension side panel, it will lock to their Device ID and activate their premium features.
+
+---
+
 ## 🛠️ System Architecture
 
 ### 1. Extension (Client) - `omni_v2_vercel`
@@ -36,15 +59,6 @@ This is the private repository containing the full, unlocked client-side Chrome 
   * `ADMIN_SECRET_KEY`: Custom admin key used on the panel to authorize generating keys.
   * `SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY`: Supabase database connections.
   * Database contains the `licenses` table tracking credits, expiry date, device ID, and status.
-
----
-
-## 🔑 Generating Customer Licenses
-1. Visit the live [Admin Key Generator](https://omni-licensing-backend.vercel.app).
-2. Enter your custom `ADMIN_SECRET_KEY` in the password input.
-3. Select the customer's purchase plan (Silver, Gold, Diamond, Elite, Premium Elite).
-4. Click **Generate Activation Code**.
-5. Copy the cryptographic code and send it to the user.
 
 ---
 
