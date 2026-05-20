@@ -1,0 +1,96 @@
+{
+  "manifest_version": 3,
+  "name": "Omni Automator",
+  "version": "2.0.0",
+  "description": "Automate content creation with Omni Automator.",
+  "permissions": [
+    "activeTab",
+    "downloads",
+    "storage",
+    "sidePanel",
+    "tabs",
+    "browsingData",
+    "scripting",
+    "unlimitedStorage"
+  ],
+  "host_permissions": [
+    "https://www.meta.ai/*",
+    "https://gemini.google.com/*",
+    "https://chatgpt.com/*",
+    "https://labs.google/*"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://labs.google/*"],
+      "js": [
+        "core/constants.js",
+        "core/utils.js",
+        "core/storage.js",
+        "core/refiner.js",
+        "content/content.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://www.meta.ai/*"],
+      "js": [
+        "core/constants.js",
+        "core/utils.js",
+        "core/storage.js",
+        "core/refiner.js",
+        "content/adapters/meta-adapter.js",
+        "content/content.js"
+      ],
+      "css": ["content/content.css"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://gemini.google.com/*"],
+      "js": [
+        "core/constants.js",
+        "core/utils.js",
+        "core/storage.js",
+        "core/refiner.js",
+        "content/adapters/gemini-adapter.js",
+        "content/content.js"
+      ],
+      "css": ["content/content.css"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://chatgpt.com/*"],
+      "js": [
+        "core/constants.js",
+        "core/utils.js",
+        "core/storage.js",
+        "core/refiner.js",
+        "content/adapters/chatgpt-adapter.js",
+        "content/content.js"
+      ],
+      "css": ["content/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "side_panel": {
+    "default_path": "sidepanel/sidepanel.html"
+  },
+  "action": {
+    "default_icon": {
+      "16": "assets/icons/icon16.png",
+      "32": "assets/icons/icon32.png",
+      "48": "assets/icons/icon48.png",
+      "128": "assets/icons/icon128.png"
+    },
+    "default_title": "Omni Automator"
+  },
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "32": "assets/icons/icon32.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  }
+}

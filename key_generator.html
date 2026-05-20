@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omni Automator - Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: rgba(17, 25, 40, 0.55);
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --primary-glow: rgba(99, 102, 241, 0.25);
+      --accent: #10b981;
+      --accent-glow: rgba(16, 185, 129, 0.2);
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(99, 102, 241, 0.6);
+      --input-bg: rgba(10, 15, 30, 0.7);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      background-image: 
+        radial-gradient(at 10% 10%, rgba(99, 102, 241, 0.15) 0px, transparent 40%),
+        radial-gradient(at 90% 90%, rgba(16, 185, 129, 0.1) 0px, transparent 40%),
+        radial-gradient(at 50% 50%, rgba(99, 102, 241, 0.05) 0px, transparent 50%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 24px;
+      overflow-x: hidden;
+    }
+
+    /* Container Box */
+    .container {
+      width: 100%;
+      max-width: 680px;
+      background: var(--card-bg);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7);
+      animation: zoomFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 20%;
+      right: 20%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.4), rgba(16, 185, 129, 0.3), transparent);
+    }
+
+    @keyframes zoomFadeIn {
+      from { opacity: 0; transform: scale(0.97) translateY(15px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .logo-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    .logo-icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 0 35px var(--primary-glow);
+    }
+
+    .logo-pulse {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 18px;
+      filter: blur(12px);
+      opacity: 0.5;
+      z-index: -1;
+      animation: pulseGlow 4s infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(1); opacity: 0.3; }
+      100% { transform: scale(1.2); opacity: 0.6; }
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.75px;
+      background: linear-gradient(135deg, #ffffff, #e2e8f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    /* Navigation Tabs */
+    .nav-tabs {
+      display: flex;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border);
+      padding: 6px;
+      border-radius: 16px;
+      margin-bottom: 36px;
+      gap: 4px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 12px;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .tab-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    }
+
+    /* Tab Contents */
+    .tab-content {
+      display: none;
+      animation: fadeInContent 0.4s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeInContent {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Form Fields */
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    input, select {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 18px;
+      font-size: 15px;
+      color: #fff;
+      font-family: inherit;
+      transition: all 0.3s;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 4px var(--primary-glow);
+      background: rgba(10, 15, 30, 0.9);
+    }
+
+    .row {
+      display: flex;
+      gap: 16px;
+    }
+
+    .row .form-group {
+      flex: 1;
+    }
+
+    /* Buttons */
+    button.btn-action {
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary), #4f46e5);
+      border: none;
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 4px 20px var(--primary-glow);
+      transition: all 0.3s;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    button.btn-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+      background: linear-gradient(135deg, #4f46e5, var(--primary));
+    }
+
+    button.btn-action:active {
+      transform: translateY(0);
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    /* Result Panel */
+    .result-box {
+      margin-top: 32px;
+      background: rgba(16, 185, 129, 0.05);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 18px;
+      padding: 24px;
+      text-align: center;
+      display: none;
+      animation: slideDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-title {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    .key-display {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 12px 20px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-bottom: 16px;
+      user-select: all;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .btn-copy {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 18px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-copy:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Documentation Section Styles */
+    .doc-section {
+      line-height: 1.6;
+    }
+
+    .doc-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .doc-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .doc-card p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .doc-list {
+      list-style-type: none;
+      padding-left: 0;
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+
+    .doc-list li {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .doc-list li::before {
+      content: "✦";
+      color: var(--accent);
+    }
+
+    /* Developer Section Styles */
+    .dev-profile {
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .dev-avatar {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+
+    .dev-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .dev-title {
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .social-links {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .social-btn.linkedin:hover {
+      background: rgba(0, 119, 181, 0.15);
+      border-color: #0077b5;
+      color: #0077b5;
+      transform: translateY(-2px);
+    }
+
+    .social-btn.whatsapp:hover {
+      background: rgba(37, 211, 102, 0.15);
+      border-color: #25d366;
+      color: #25d366;
+      transform: translateY(-2px);
+    }
+
+    .social-btn.fiverr:hover {
+      background: rgba(29, 191, 115, 0.15);
+      border-color: #1dbf73;
+      color: #1dbf73;
+      transform: translateY(-2px);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #111827;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 14px 28px;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      font-weight: 600;
+      font-size: 14px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <div class="logo-wrapper">
+        <div class="logo-icon">⚡</div>
+        <div class="logo-pulse"></div>
+      </div>
+      <h1>Omni Automator</h1>
+      <div class="subtitle">Enterprise Portal & Control Center</div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+      <button class="tab-btn active" onclick="switchTab('licenseTab')">🔑 Key Generator</button>
+      <button class="tab-btn" onclick="switchTab('docTab')">📖 About & Docs</button>
+      <button class="tab-btn" onclick="switchTab('devTab')">💼 Developer Hub</button>
+    </div>
+
+    <!-- Tab 1: License Key Generator -->
+    <div id="licenseTab" class="tab-content active">
+      <div class="form-group">
+        <label for="adminKey">Admin Secret Key</label>
+        <input type="password" id="adminKey" value="" placeholder="Enter Admin Secret Key">
+      </div>
+
+      <div class="form-group">
+        <label for="plan">Licensing Plan</label>
+        <select id="plan">
+          <option value="Silver">Silver (300 PKR - 30 days, 1000 gens)</option>
+          <option value="Gold">Gold (700 PKR - 30 days, 3000 gens)</option>
+          <option value="Diamond">Diamond (1100 PKR - 30 days, 7000 gens)</option>
+          <option value="Elite">Elite (2000 PKR - 60 days, Unlimited)</option>
+          <option value="Premium Elite">Premium Elite (6000 PKR - 1 Year, Unlimited)</option>
+          <option value="Lifetime">Lifetime (Unlimited Generations)</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label for="days">Validity (Days)</label>
+          <input type="number" id="days" value="30">
+        </div>
+        <div class="form-group">
+          <label for="credits">Credits / Limits</label>
+          <input type="number" id="credits" value="1000">
+        </div>
+      </div>
+
+      <button id="generateBtn" class="btn-action">
+        <span>⚡ Generate Activation Code</span>
+      </button>
+
+      <div id="resultBox" class="result-box">
+        <div class="result-title">System Key Generated</div>
+        <div id="keyDisplay" class="key-display">OMNI-XXXXXX</div>
+        <div>
+          <button id="copyBtn" class="btn-copy">
+            <span>📋 Copy Code</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 2: About & Docs -->
+    <div id="docTab" class="tab-content">
+      <div class="doc-section">
+        <div class="doc-card">
+          <h3>🚀 What is Omni Automator?</h3>
+          <p>Omni Automator is a high-performance productivity tool that helps creators automate bulk queue submissions across top generation platforms.</p>
+        </div>
+
+        <div class="doc-card">
+          <h3>💎 Core System Features</h3>
+          <ul class="doc-list">
+            <li><strong>Stealth Engine</strong>: Realistic intervals to ensure session pacing is completely organic.</li>
+            <li><strong>Form Automation</strong>: Sequentially handles prompts from a queue txt file upload.</li>
+            <li><strong>Advanced Safety Settings</strong>: Custom timeouts, cache clear intervals, and settings.</li>
+            <li><strong>Cryptographic Binding</strong>: Licenses are locked to individual device profiles for maximum security.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 3: Developer Hub -->
+    <div id="devTab" class="tab-content">
+      <div class="dev-profile">
+        <div class="dev-avatar">👨‍💻</div>
+        <div class="dev-name">Osama Altaf</div>
+        <div class="dev-title">System Creator & Fullstack Developer</div>
+        
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/osamaaltafpk/" target="_blank" class="social-btn linkedin">
+            <svg style="width:20px; height:20px; fill:currentColor;" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            LinkedIn Profile
+          </a>
+          <a href="https://wa.me/923187661096" target="_blank" class="social-btn whatsapp">
+            <svg style="width:20px; height:20px; fill:currentColor;" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            Contact via WhatsApp
+          </a>
+          <a href="https://www.fiverr.com/neural_networks" target="_blank" class="social-btn fiverr">
+            👔 Freelance Support (Fiverr)
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Code copied to clipboard!</div>
+
+  <script>
+    // Tab switching logic
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      
+      document.getElementById(tabId).classList.add('active');
+      const activeBtnIdx = tabId === 'licenseTab' ? 0 : tabId === 'docTab' ? 1 : 2;
+      document.querySelectorAll('.tab-btn')[activeBtnIdx].classList.add('active');
+    }
+
+    // Dynamically check hosted location to use correct endpoint
+    const API_URL = window.location.protocol === 'file:' 
+      ? 'https://omni-licensing-backend-hoskqk3j8-osamaaltaf-pks-projects.vercel.app/api' 
+      : '/api';
+
+    // Auto-fill defaults depending on plans
+    document.getElementById('plan').addEventListener('change', (e) => {
+      const plan = e.target.value;
+      const daysInput = document.getElementById('days');
+      const creditsInput = document.getElementById('credits');
+
+      if (plan === 'Silver') {
+        daysInput.value = '30';
+        creditsInput.value = '1000';
+      } else if (plan === 'Gold') {
+        daysInput.value = '30';
+        creditsInput.value = '3000';
+      } else if (plan === 'Diamond') {
+        daysInput.value = '30';
+        creditsInput.value = '7000';
+      } else if (plan === 'Elite') {
+        daysInput.value = '60';
+        creditsInput.value = '999999';
+      } else if (plan === 'Premium Elite') {
+        daysInput.value = '365';
+        creditsInput.value = '999999';
+      } else if (plan === 'Lifetime') {
+        daysInput.value = '9999';
+        creditsInput.value = '999999';
+      }
+    });
+
+    document.getElementById('generateBtn').addEventListener('click', async () => {
+      const generateBtn = document.getElementById('generateBtn');
+      const adminKey = document.getElementById('adminKey').value.trim();
+      const plan = document.getElementById('plan').value;
+      const days = document.getElementById('days').value;
+      const credits = document.getElementById('credits').value;
+
+      if (!adminKey) {
+        showToast('Please enter your Admin Secret Key');
+        return;
+      }
+
+      generateBtn.disabled = true;
+      generateBtn.querySelector('span').textContent = 'Requesting Server...';
+
+      try {
+        const resp = await fetch(`${API_URL}/admin/generate`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            adminKey,
+            plan,
+            days: parseInt(days),
+            credits: parseInt(credits)
+          })
+        });
+
+        if (resp.ok) {
+          const data = await resp.json();
+          document.getElementById('keyDisplay').textContent = data.key;
+          document.getElementById('resultBox').style.display = 'block';
+          showToast('🔑 Key generated successfully!');
+        } else {
+          const text = await resp.text();
+          showToast('❌ Error: ' + text);
+        }
+      } catch (e) {
+        showToast('📡 Failed to connect to licensing server');
+      } finally {
+        generateBtn.disabled = false;
+        generateBtn.querySelector('span').textContent = '⚡ Generate Activation Code';
+      }
+    });
+
+    document.getElementById('copyBtn').addEventListener('click', () => {
+      const key = document.getElementById('keyDisplay').textContent;
+      navigator.clipboard.writeText(key).then(() => {
+        showToast('📋 Code copied to clipboard!');
+      });
+    });
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

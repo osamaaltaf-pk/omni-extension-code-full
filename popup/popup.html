@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meta Automator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup">
+    <header class="popup-header">
+      <div class="popup-logo">
+        <span class="popup-icon">⚡</span>
+        <div>
+          <h1 class="popup-title">Meta Automator</h1>
+          <p class="popup-version">v1.0.0</p>
+        </div>
+      </div>
+      <div class="popup-status" id="popupStatus">
+        <span class="status-dot" id="statusDot"></span>
+        <span class="status-text" id="statusText">Idle</span>
+      </div>
+    </header>
+
+    <div class="popup-stats">
+      <div class="stat-card">
+        <span class="stat-value" id="totalGenerated">0</span>
+        <span class="stat-label">Generated</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="totalDownloads">0</span>
+        <span class="stat-label">Downloads</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="queueLength">0</span>
+        <span class="stat-label">In Queue</span>
+      </div>
+    </div>
+
+    <div class="popup-progress" id="progressSection" style="display:none;">
+      <div class="progress-info">
+        <span id="progressLabel">Processing...</span>
+        <span id="progressCount">0/0</span>
+      </div>
+      <div class="progress-bar-outer">
+        <div class="progress-bar-inner" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="popup-actions">
+      <button class="popup-btn popup-btn-primary" id="openSidePanel">
+        🎨 Open Automator Panel
+      </button>
+      <button class="popup-btn popup-btn-secondary" id="openMetaAI">
+        🌐 Open Meta AI
+      </button>
+    </div>
+
+    <div class="popup-quick">
+      <button class="quick-btn" id="quickStop" title="Stop generation" disabled>⏹ Stop</button>
+      <button class="quick-btn" id="quickClearCache" title="Clear cache">🧹 Clear Cache</button>
+    </div>
+
+    <footer class="popup-footer">
+      <div style="font-weight: 600;">Osama_ALtaf on fiverr - @neural_network</div>
+      <div style="font-size: 11px; color: #4ade80; margin-top: 2px;">WhatsApp: +923187661096</div>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omni Automator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <!-- Creator Branding (Top) -->
+  <div class="sp-creator-branding">
+    <div class="sp-creator-row">
+      <span class="sp-creator-name">Osama_Altaf</span>
+      <div class="sp-creator-links">
+        <a href="https://linkedin.com/in/osamaaltafpk" target="_blank" class="sp-creator-link" title="LinkedIn">
+          <svg viewBox="0 0 24 24" style="fill:#0077b5;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+        <a href="https://www.fiverr.com/neural_networks" target="_blank" class="sp-creator-link" title="Fiverr">
+          <svg viewBox="0 0 512 512" style="fill:#1dbf73;"><path d="M67.1 121.5c-24.2 0-44 19.8-44 44v181c0 24.2 19.8 44 44 44h377.8c24.2 0 44-19.8 44-44v-181c0-24.2-19.8-44-44-44H67.1zm81.4 75.8h41.7v28.4h.6c5.7-10.8 15.3-22.3 32.2-22.3 17.5 0 31.7 11.4 31.7 34.6v63.1h-33.1v-58.1c0-11-4.4-18.6-14.4-18.6-7.6 0-12.1 5.1-14.1 10.1-.7 1.8-1.1 4.3-1.1 6.8v59.8h-33.1v-103.8h-.4zm134.1 0h31.7v14.1h.4c4.4-8 11.7-15.5 24.2-15.5 13.1 0 23.4 8.7 23.4 25.8v61.1h-33.1v-56.1c0-10.5-3.8-17.6-13.3-17.6-7.3 0-11.6 4.9-13.5 9.7-.7 1.7-1 4.1-1 6.5v57.5h-33.1v-103.8h-.4z"/></svg>
+        </a>
+        <a href="https://github.com/osamaaltaf-pk/omni-flow-pipeline" target="_blank" class="sp-creator-link" title="GitHub Documentation">
+            <svg viewBox="0 0 24 24" style="fill:#ffffff;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://wa.me/923187661096" target="_blank" class="sp-creator-link" title="WhatsApp">
+          <svg viewBox="0 0 24 24" style="fill:#25d366;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="sp-creator-tagline">Creation of custom AI tools, YouTube automation, LLMs and more</div>
+  </div>
+
+  <!-- Header -->
+  <header class="sp-header">
+    <div class="sp-logo">
+      <span class="sp-logo-icon">⚡</span>
+      <div>
+        <h1 class="sp-logo-title">Omni Automator</h1>
+        <p class="sp-logo-sub">Content Automation Assistant</p>
+      </div>
+    </div>
+    <div class="sp-header-actions">
+      <button id="themeToggleBtn" class="sp-icon-btn" title="Toggle Light/Dark Mode">
+        <span id="themeIcon">🌙</span>
+      </button>
+      <div class="sp-status-dot" id="statusDot" title="Status: Idle"></div>
+    </div>
+  </header>
+
+  <!-- Platform Selector -->
+  <div class="sp-platform-bar">
+    <div class="sp-platform-group">
+      <button class="sp-platform-btn active" data-platform="meta" title="Meta AI">
+        <span class="sp-platform-icon">Ⓜ</span> Meta AI
+      </button>
+      <button class="sp-open-site-btn" data-url="https://www.meta.ai" title="Open Meta AI">🔗</button>
+    </div>
+    <div class="sp-platform-group">
+      <button class="sp-platform-btn" data-platform="gemini" title="Google Gemini (Flash)">
+        <span class="sp-platform-icon">✦</span> Gemini
+      </button>
+      <button class="sp-open-site-btn" data-url="https://gemini.google.com" title="Open Google Gemini">🔗</button>
+    </div>
+    <div class="sp-platform-group">
+      <button class="sp-platform-btn" data-platform="chatgpt" title="ChatGPT">
+        <span class="sp-platform-icon">◎</span> ChatGPT
+      </button>
+      <button class="sp-open-site-btn" data-url="https://chatgpt.com" title="Open ChatGPT">🔗</button>
+    </div>
+  </div>
+
+  <!-- Tab Navigation -->
+  <nav class="sp-tabs">
+    <button class="sp-tab active" data-tab="generate">
+      <span class="sp-tab-icon">🎨</span> Generate
+    </button>
+    <button class="sp-tab" data-tab="flow-pipeline">
+      <span class="sp-tab-icon">🎞️</span> Flow Pipeline
+    </button>
+    <button class="sp-tab" data-tab="settings">
+      <span class="sp-tab-icon">⚙️</span> Settings
+    </button>
+    <button class="sp-tab" data-tab="licensing" id="licensingTab">
+      <span class="sp-tab-icon">💎</span> Premium
+    </button>
+  </nav>
+
+  <!-- Tab Content -->
+  <main class="sp-content">
+    <!-- ═══ GENERATE TAB ═══ -->
+    <section class="sp-panel active" id="panel-generate">
+      <!-- Mode Selector -->
+      <div class="sp-section" id="genModeSection">
+        <label class="sp-label">Generation Mode</label>
+        <div class="sp-mode-grid" id="genModeGrid" style="grid-template-columns: 1fr 1fr 1fr;">
+          <button class="sp-mode-btn active" data-gen-mode="image" id="modeImage">
+            <span class="sp-mode-icon">🖼️</span>
+            <span>Image</span>
+          </button>
+          <button class="sp-mode-btn" data-gen-mode="video" id="modeVideo">
+            <span class="sp-mode-icon">🎬</span>
+            <span>Video</span>
+          </button>
+          <button class="sp-mode-btn" data-gen-mode="pipeline" id="modePipeline">
+            <span class="sp-mode-icon">🎞️</span>
+            <span>Pipeline</span>
+          </button>
+        </div>
+        <!-- Platform note for Gemini/ChatGPT -->
+        <p class="sp-hint sp-platform-note" id="platformNote" style="display:none; margin-top:8px;"></p>
+      </div>
+
+      <!-- Story Context (Always Visible) -->
+      <div class="sp-section" id="contextSection">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <label class="sp-label" style="margin-bottom: 0;">📖 Story Context</label>
+          <label class="sp-toggle"><input type="checkbox" id="contextEnabled" checked><span class="sp-toggle-slider"></span></label>
+        </div>
+        <p class="sp-hint">Automatically applied to maintain scene consistency.</p>
+        <div class="sp-input-group" style="margin-top:8px;">
+          <label class="sp-label-sm">Characters &amp; Environment</label>
+          <input type="text" class="sp-input" id="pipeCharsEnv" placeholder="e.g. Marcus, futuristic train station">
+        </div>
+        <div class="sp-input-group" style="margin-top:8px;">
+          <label class="sp-label-sm">Atmosphere &amp; Style</label>
+          <input type="text" class="sp-input" id="pipeAtmosphere" placeholder="e.g. Pixar 3D animation, cinematic lighting">
+        </div>
+      </div>
+
+      <!-- Input Mode -->
+      <div class="sp-section" id="inputModeSection">
+        <label class="sp-label">Input Method</label>
+        <div class="sp-input-modes" id="inputModeBtnGroup">
+          <button class="sp-chip active" id="chipText" data-input-mode="text" title="Text prompts only">
+            📝 Text Only
+          </button>
+          <button class="sp-chip" id="chipSingle" data-input-mode="single" title="Upload character/environment sheets">
+            🎭 Char &amp; Env Sheet
+          </button>
+          <button class="sp-chip" id="chipPaired" data-input-mode="paired" title="Pair each prompt with its own image">
+            🔗 Paired (1 per prompt)
+          </button>
+        </div>
+        <p class="sp-hint" id="inputModeHint" style="margin-top:6px;"></p>
+      </div>
+
+      <!-- Resolution, Concurrency & Downloads Row -->
+      <div class="sp-section">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px;">
+          <div>
+            <label class="sp-label">📏 Resolution</label>
+            <div class="sp-input-modes" id="resolutionSelector">
+              <button class="sp-chip active" data-res="1:1">1:1</button>
+              <button class="sp-chip" data-res="16:9">16:9</button>
+              <button class="sp-chip" data-res="9:16">9:16</button>
+            </div>
+          </div>
+          <div>
+            <label class="sp-label">👯 Concurrency</label>
+            <div class="sp-input-modes" id="concurrencySelector">
+              <button class="sp-chip active" data-factor="1">1x</button>
+              <button class="sp-chip" data-factor="2">2x</button>
+              <button class="sp-chip" data-factor="4">4x</button>
+            </div>
+          </div>
+        </div>
+        <div id="downloadSelectorRow">
+          <label class="sp-label">📥 Max Downloads (per prompt)</label>
+          <div class="sp-input-modes" id="downloadFactorSelector">
+            <button class="sp-chip active" data-factor="1">1 (Best)</button>
+            <button class="sp-chip" data-factor="2">2 Variations</button>
+            <button class="sp-chip" data-factor="4">All 4 Variations</button>
+          </div>
+          <p class="sp-hint" id="downloadHint">Determines how many variations to download automatically.</p>
+        </div>
+      </div>
+
+      <!-- Mode-Specific Folder -->
+      <div class="sp-section" id="modeFolderSection">
+        <div id="folderMetaImageGroup">
+          <label class="sp-label">📁 Meta AI Image Folder</label>
+          <input type="text" class="sp-input" id="folderMetaImage" value="Meta_Images">
+        </div>
+        <div id="folderMetaVideoGroup" style="display:none;">
+          <label class="sp-label">📁 Meta AI Video Folder</label>
+          <input type="text" class="sp-input" id="folderMetaVideo" value="Meta_Videos">
+        </div>
+        <div id="folderGeminiGroup" style="display:none;">
+          <label class="sp-label">📁 Gemini Image Folder</label>
+          <input type="text" class="sp-input" id="folderGemini" value="Gemini_Images">
+        </div>
+        <div id="folderChatGPTGroup" style="display:none;">
+          <label class="sp-label">📁 ChatGPT Image Folder</label>
+          <input type="text" class="sp-input" id="folderChatGPT" value="ChatGPT_Images">
+        </div>
+        <div id="folderMetaPipeVideoGroup" style="display:none;">
+          <label class="sp-label">📁 Meta Pipeline Videos</label>
+          <input type="text" class="sp-input" id="folderMetaPipeVideo" value="Meta_Pipe_Videos">
+        </div>
+        <p class="sp-hint" style="margin-top:4px;">Files will be saved in: Downloads / [Folder Name]</p>
+      </div>
+
+      <!-- Reference Images -->
+      <div class="sp-section sp-ref-section" id="refSection" style="display:none;">
+        <label class="sp-label" id="refSectionLabel">Reference Images</label>
+        <div class="sp-dropzone" id="refDropzone">
+          <span class="sp-dropzone-icon">📁</span>
+          <p>Drag &amp; drop images here or <span class="sp-link" id="refBrowse">browse</span></p>
+          <input type="file" id="refFileInput" multiple accept="image/*" style="display:none;">
+        </div>
+        <div class="sp-ref-list" id="refList"></div>
+      </div>
+
+      <!-- Prompt Input -->
+      <div class="sp-section">
+        <label class="sp-label" id="promptAreaLabel">
+          Prompts
+          <span class="sp-label-hint" id="promptCount">0 prompts</span>
+        </label>
+        <textarea class="sp-textarea" id="promptInput" placeholder="Enter prompts, one per line..." rows="6"></textarea>
+        <div class="sp-prompt-actions">
+          <button class="sp-btn-sm" id="uploadPromptsBtn" title="Upload .txt file">📄 Upload TXT</button>
+          <button class="sp-btn-sm" id="refinePromptsBtn" title="Auto-fix sensitive keywords">✨ Clean &amp; Refine</button>
+          <button class="sp-btn-sm" id="clearPromptsBtn" title="Clear image prompts">🗑️ Clear</button>
+          <input type="file" id="promptFileInput" accept=".txt" style="display:none;">
+        </div>
+
+        <!-- Video Prompts (Pipeline mode only) -->
+        <div id="videoPromptWrapper" style="display:none; margin-top: 15px; border-top: 1px solid var(--border); padding-top: 15px;">
+          <label class="sp-label">
+            Video Prompts
+            <span class="sp-label-hint" id="videoPromptCount">0 prompts</span>
+          </label>
+          <textarea class="sp-textarea" id="videoPromptInput" placeholder="Enter video prompts, one per line... (Will auto-prepend 'Animate')" rows="6"></textarea>
+          <div class="sp-prompt-actions">
+            <button class="sp-btn-sm" id="uploadVidPromptsBtn" title="Upload .txt file">📄 Upload TXT</button>
+            <button class="sp-btn-sm" id="clearVidPromptsBtn" title="Clear video prompts">🗑️ Clear</button>
+            <input type="file" id="vidPromptFileInput" accept=".txt" style="display:none;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div class="sp-progress-section" id="progressSection" style="display:none;">
+        <div class="sp-progress-header">
+          <span class="sp-progress-label" id="progressLabel">Processing...</span>
+          <span class="sp-progress-count" id="progressCount">0/0</span>
+        </div>
+        <div class="sp-progress-bar-outer">
+          <div class="sp-progress-bar-inner" id="progressBar"></div>
+        </div>
+        <div class="sp-progress-stats">
+          <span class="sp-stat sp-stat-done" id="statCompleted">✅ 0</span>
+          <span class="sp-stat sp-stat-fail" id="statFailed">❌ 0</span>
+          <span class="sp-stat sp-stat-pend" id="statPending">⏳ 0</span>
+        </div>
+      </div>
+
+      <!-- Queue List -->
+      <div class="sp-queue-list" id="queueList"></div>
+
+      <!-- Queue Actions (Regenerate / Run Video Phase) -->
+      <div class="sp-queue-actions-bar" id="queueActions" style="display:none;">
+        <button class="sp-btn-sm" id="queueRegenerateBtn">🔄 Retry Failed</button>
+        <button class="sp-btn-sm" id="queueCleanBtn" title="Clean completed and failed items">🧹 Clean Queue</button>
+        <button class="sp-btn-sm sp-btn-accent" id="queuePhase2Btn" style="display:none;">🎬 Run Video Phase</button>
+      </div>
+
+      <!-- Controls -->
+      <div class="sp-controls">
+        <button class="sp-btn sp-btn-primary" id="startBtn">▶ Start Generation</button>
+        <div class="sp-controls-row">
+          <button class="sp-btn sp-btn-secondary" id="pauseBtn" disabled>⏸ Pause</button>
+          <button class="sp-btn sp-btn-stop" id="stopBtn" disabled>⏹ Stop</button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══ FLOW PIPELINE TAB ═══ -->
+    <section class="sp-panel" id="panel-flow-pipeline">
+
+      <!-- Header -->
+      <div class="sp-section flp-info-block">
+        <div class="flp-info-row">
+          <span class="flp-info-icon">🎞️</span>
+          <div>
+            <div class="flp-info-title">Flow → Meta AI Pipeline</div>
+            <div class="flp-info-sub">Watches VEO Flow downloads and auto-feeds each image into Meta AI as a video prompt — fully hands-free.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status -->
+      <div class="flp-status-bar" id="flpStatusBar">
+        <span class="flp-status-dot idle" id="flpStatusDot"></span>
+        <span id="flpStatusText">Idle — ready to watch</span>
+      </div>
+
+      <!-- Video Prompts -->
+      <div class="sp-section">
+        <label class="sp-label">
+          Video Prompts
+          <span class="sp-label-hint" id="flpVidCount">0 prompts</span>
+        </label>
+        <p class="sp-hint" style="margin-bottom:6px;">One per line. Matched in order to incoming Flow images.</p>
+        <textarea class="sp-textarea" id="flpVideoPrompts" rows="6"
+          placeholder="Dragon breathes slowly, coins shimmer&#10;Camera pushes through forest, leaves flutter&#10;Pages turn, sparkles drift upward..."></textarea>
+        <div class="sp-prompt-actions">
+          <button class="sp-btn-sm" id="flpUploadBtn">📄 Upload TXT</button>
+          <button class="sp-btn-sm" id="flpClearPromptsBtn">🗑️ Clear</button>
+          <input type="file" id="flpFileInput" accept=".txt" style="display:none;">
+        </div>
+      </div>
+
+      <!-- Story Context -->
+      <div class="sp-section">
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <label class="sp-label" style="margin-bottom:0;">Story Context <span class="sp-hint" style="margin-left:4px;">(optional)</span></label>
+          <label class="sp-toggle"><input type="checkbox" id="flpContextEnabled" checked><span class="sp-toggle-slider"></span></label>
+        </div>
+        <div id="flpContextFields" style="margin-top:8px;">
+          <input type="text" class="sp-input" id="flpCharsEnv"
+            placeholder="Characters &amp; environment — e.g. Marcus, futuristic city" style="margin-bottom:6px;">
+          <input type="text" class="sp-input" id="flpAtmosphere"
+            placeholder="Style &amp; atmosphere — e.g. Pixar 3D, cinematic lighting">
+        </div>
+      </div>
+
+      <!-- Output Settings -->
+      <div class="sp-section">
+        <label class="sp-label">Output Configuration</label>
+        
+        <div class="sp-label-sm">Aspect Ratio</div>
+        <div class="sp-input-modes" id="flpResolutionSelector" style="margin-bottom:12px;">
+          <div class="sp-chip active" data-res="1:1">1:1</div>
+          <div class="sp-chip" data-res="16:9">16:9</div>
+          <div class="sp-chip" data-res="9:16">9:16</div>
+          <div class="sp-chip" data-res="4:3">4:3</div>
+          <div class="sp-chip" data-res="3:2">3:2</div>
+        </div>
+
+        <div class="sp-label-sm">Video Concurrency (per image)</div>
+        <div class="sp-input-modes" id="flpConcurrencySelector" style="margin-bottom:12px;">
+          <div class="sp-chip active" data-factor="1">1x</div>
+          <div class="sp-chip" data-factor="2">2x</div>
+          <div class="sp-chip" data-factor="3">3x</div>
+          <div class="sp-chip" data-factor="4">4x</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div>
+            <label class="sp-label-sm">VEO Input Folder</label>
+            <input type="text" class="sp-input" id="flpFolderMarker" value="pipeline_images">
+          </div>
+          <div>
+            <label class="sp-label-sm">Output Video Folder</label>
+            <input type="text" class="sp-input" id="flpVideoFolder" value="pipeline_videos">
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div id="flpProgressSection" style="display:none;" class="flp-progress-section">
+        <div class="flp-progress-header">
+          <span id="flpProgressLabel">Watching for images...</span>
+          <span id="flpProgressCount">0 / 0</span>
+        </div>
+        <div class="sp-progress-bar-outer">
+          <div class="sp-progress-bar-inner flp-bar" id="flpProgressBar" style="width:0%"></div>
+        </div>
+        <div class="sp-progress-stats">
+          <span class="sp-stat sp-stat-done" id="flpStatImages">🖼️ 0 received</span>
+          <span class="sp-stat sp-stat-done" id="flpStatVideos">🎬 0 done</span>
+          <span class="sp-stat sp-stat-fail" id="flpStatFailed">❌ 0 failed</span>
+        </div>
+      </div>
+
+      <!-- Instruction shown when active -->
+      <div class="flp-instruction-box" id="flpInstruction" style="display:none;">
+        ✅ Watching active — go to <strong>VEO Flow</strong> tab and click <strong>Run</strong>. Images will be picked up automatically.
+      </div>
+
+      <!-- Log -->
+      <div class="flp-log-box" id="flpLog" style="display:none;"></div>
+
+      <!-- Queue preview -->
+      <div class="flp-queue-list" id="flpQueueList"></div>
+
+      <!-- Controls -->
+      <div class="sp-controls">
+        <button class="sp-btn sp-btn-primary" id="flpStartBtn">▶ Start Watching</button>
+        <div style="display: flex; gap: 8px; width: 100%; margin-bottom: 8px;">
+          <button class="sp-btn sp-btn-secondary" id="flpRegenerateBtn" style="display:none; flex: 1; margin-bottom: 0;">🔄 Regenerate Failed</button>
+          <button class="sp-btn sp-btn-secondary" id="flpCleanBtn" style="display:none; flex: 1; margin-bottom: 0;">🧹 Clean Queue</button>
+        </div>
+        <div class="sp-controls-row">
+          <button class="sp-btn sp-btn-stop" id="flpStopBtn" disabled>⏹ Stop</button>
+          <button class="sp-btn sp-btn-secondary" id="flpClearLogBtn">🗑️ Clear Log</button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ═══ SETTINGS TAB ═══ -->
+    <section class="sp-panel" id="panel-settings">
+      <div class="sp-section">
+        <label class="sp-label">⚙️ Global Settings</label>
+        
+        <div class="sp-settings-grid">
+          <!-- Automation Card -->
+          <div class="sp-settings-card">
+            <label class="sp-label-sm">Automation</label>
+            <div class="sp-setting-row">
+              <span class="sp-hint">Stealth Mode</span>
+              <label class="sp-toggle"><input type="checkbox" id="stealthToggle" checked><span class="sp-toggle-slider"></span></label>
+            </div>
+            <div class="sp-setting-row">
+              <span class="sp-hint">Auto Download</span>
+              <label class="sp-toggle"><input type="checkbox" id="autoDownloadToggle" checked><span class="sp-toggle-slider"></span></label>
+            </div>
+            <div class="sp-setting-row">
+              <span class="sp-hint" title="Automatically re-phrase prompts that get flagged by Meta AI">Auto-Fix Flagged Prompts</span>
+              <label class="sp-toggle"><input type="checkbox" id="autoFixToggle" checked><span class="sp-toggle-slider"></span></label>
+            </div>
+            <div class="sp-setting-row">
+              <span class="sp-hint">Auto Cache Clear</span>
+              <label class="sp-toggle"><input type="checkbox" id="cacheToggle" checked><span class="sp-toggle-slider"></span></label>
+            </div>
+          </div>
+
+          <!-- Delays Card -->
+          <div class="sp-settings-card">
+            <label class="sp-label-sm">Delays & Speed</label>
+            <div class="sp-range-group">
+              <label>Min Delay <span id="minDelayVal">3s</span></label>
+              <input type="range" id="minDelay" min="1000" max="30000" step="500" value="3000">
+            </div>
+            <div class="sp-range-group">
+              <label>Max Delay <span id="maxDelayVal">7s</span></label>
+              <input type="range" id="maxDelay" min="1000" max="60000" step="500" value="7000">
+          </div>
+
+          <!-- Advanced Card -->
+          <div class="sp-settings-card">
+            <label class="sp-label-sm">Advanced Options</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+              <div class="sp-input-group">
+                <label class="sp-hint">Clear Interval (gens)</label>
+                <input type="number" class="sp-input" id="cacheClearInterval" value="50">
+              </div>
+              <div class="sp-input-group">
+                <label class="sp-hint">Timeout (seconds)</label>
+                <input type="number" class="sp-input" id="genTimeout" value="180">
+              </div>
+            </div>
+            <div class="sp-input-group" style="margin-top:10px;">
+              <label class="sp-label-sm">Preferred Image Format</label>
+              <select class="sp-input" id="imageFormat">
+                <option value="png">PNG (Lossless)</option>
+                <option value="jpg">JPEG (Compressed)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Maintenance Card -->
+          <div class="sp-settings-card">
+            <label class="sp-label-sm">Maintenance</label>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <button class="sp-btn-sm" id="clearCacheBtn">🧹 Clear Browser Cache</button>
+              <button class="sp-btn-sm" id="resetStorageBtn">🗑️ Reset Queue & Storage</button>
+              <button class="sp-btn-sm sp-btn-danger-sm" id="restartExtensionBtn">🔄 Restart Extension</button>
+            </div>
+          </div>
+        </div>
+
+        <button class="sp-btn sp-btn-primary" id="saveSettingsBtn" style="margin-top:16px;">💾 Save Configuration</button>
+      </div>
+    </section>
+    
+    <!-- ═══ LICENSING TAB ═══ -->
+        <!-- ================= LICENSING TAB ================= -->
+    <section class="sp-panel" id="panel-licensing">
+      <div class="sp-section">
+        <label class="sp-label">📋 Premium Subscription</label>
+        
+        <!-- Status Card -->
+        <div class="sp-settings-card" style="border: 1px solid var(--accent-color);">
+          <div class="sp-label-sm" id="licenseStatusTitle">Current Status: Trial</div>
+          <p class="sp-hint" id="licenseStatusDesc" style="margin-bottom:10px;">You are using the free trial. 3/3 generations remaining.</p>
+          <div class="sp-progress-bar-outer" style="height: 6px;">
+            <div class="sp-progress-bar-inner" id="trialProgress" style="width: 100%;"></div>
+          </div>
+        </div>
+
+        <!-- Pricing Plans -->
+        <div class="sp-label" style="margin-top:20px;">Available Plans</div>
+        <div class="sp-plans-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+          <div class="sp-plan-card" style="padding: 10px; border-radius: 8px;">
+            <div class="sp-plan-name" style="font-weight:600; font-size:12px;">Silver</div>
+            <div class="sp-plan-price" style="font-size:14px; font-weight:700; color:var(--text-primary);">PKR 300</div>
+            <div class="sp-plan-feature" style="font-size:10px; opacity:0.8;">1,000 Gens</div>
+            <div class="sp-plan-feature" style="font-size:10px; opacity:0.8;">30 Days</div>
+          </div>
+          <div class="sp-plan-card" style="padding: 10px; border-radius: 8px;">
+            <div class="sp-plan-name" style="font-weight:600; font-size:12px;">Gold</div>
+            <div class="sp-plan-price" style="font-size:14px; font-weight:700; color:var(--text-primary);">PKR 700</div>
+            <div class="sp-plan-feature" style="font-size:10px; opacity:0.8;">3,000 Gens</div>
+            <div class="sp-plan-feature" style="font-size:10px; opacity:0.8;">30 Days</div>
+          </div>
+          <div class="sp-plan-card" style="padding: 10px; border-radius: 8px;">
+            <div class="sp-plan-name" style="font-weight:600; font-size:12px;">Diamond</div>
+            <div class="sp-plan-price" style="font-size:14px; font-weight:700; color:var(--text-primary);">PKR 1,100</div>
+            <div class="sp-plan-feature" style="font-size:10px; opacity:0.8;">7,000 Gens</div>
+            <div class="sp-plan-feature" style="font-size:10px; opacity:0.8;">30 Days</div>
+          </div>
+          <div class="sp-plan-card" style="padding: 10px; border-radius: 8px;">
+            <div class="sp-plan-name" style="font-weight:600; font-size:12px;">Elite</div>
+            <div class="sp-plan-price" style="font-size:14px; font-weight:700; color:var(--text-primary);">PKR 2,000</div>
+            <div class="sp-plan-feature" style="font-size:10px; opacity:0.8;">Unlimited Gens</div>
+            <div class="sp-plan-feature" style="font-size:10px; opacity:0.8;">60 Days</div>
+          </div>
+          <div class="sp-plan-card" style="padding: 10px; border-radius: 8px; grid-column: span 2;">
+            <div class="sp-plan-name" style="font-weight:600; font-size:12px;">Premium Elite</div>
+            <div class="sp-plan-price" style="font-size:14px; font-weight:700; color:var(--text-primary);">PKR 6,000</div>
+            <div class="sp-plan-feature" style="font-size:10px; opacity:0.8;">Unlimited Gens - 1 Year</div>
+          </div>
+        </div>
+        <p class="sp-hint" style="margin-top: 5px; font-size: 11px; text-align: center; color: var(--accent-color);">
+          <strong>Academy Plan:</strong> WhatsApp Contact: 03187661096
+        </p>
+
+        <!-- Payment Instructions -->
+        <div class="sp-label" style="margin-top:20px;">How to Upgrade</div>
+        <div class="sp-settings-card">
+          <p class="sp-hint" style="color: var(--text-primary);">1. Choose a plan and transfer amount to:</p>
+          <div style="margin: 10px 0; font-size: 11px; line-height: 1.5;">
+            <div><strong>Account Holder:</strong> Osama Altaf</div>
+            <div><strong>JazzCash:</strong> 03023638174</div>
+            <div><strong>EasyPaisa:</strong> 03187661096</div>
+            <div><strong>Bank:</strong> For Custom Order or Academy bulk Order Talk on WhatsApp</div>
+          </div>
+          <p class="sp-hint">2. Send screenshot of payment & your <strong>Device ID</strong> to WhatsApp: <strong>03187661096</strong></p>
+          
+          <div class="sp-input-group" style="margin-top:10px; border: 1px dashed rgba(255, 152, 0, 0.2); padding: 12px; border-radius: 8px; background: rgba(255, 152, 0, 0.02);">
+            <label class="sp-label-sm" style="color: #ff9800; font-weight: 700; display: block; margin-bottom: 6px;">⚠️ COPY &amp; SEND THIS ID (REQUIRED)</label>
+            <div style="display: flex; gap: 5px;">
+              <input type="text" class="sp-input" id="deviceIdInput" readonly value="Loading..." style="border-color: rgba(255, 152, 0, 0.3);">
+              <button class="sp-btn-sm" id="copyDeviceIdBtn" style="background: rgba(255, 152, 0, 0.1); border-color: rgba(255, 152, 0, 0.3); color: #ff9800;">📋 Copy ID</button>
+            </div>
+            <p class="sp-hint" style="margin-top: 8px; font-size: 10px; color: var(--text-muted); line-height: 1.4; font-style: italic;">
+              Note: Activation codes are cryptographically bound to this Device ID. You MUST send this ID to activate the license.
+            </p>
+          </div>
+        </div>
+
+        <!-- Activation -->
+        <div class="sp-label" style="margin-top:20px;">Activate License</div>
+        <div class="sp-input-group">
+          <textarea class="sp-textarea" id="licenseKeyInput" placeholder="Paste your Activation Code here..." rows="3"></textarea>
+          <button class="sp-btn sp-btn-primary" id="activateLicenseBtn" style="margin-top:10px;">⚡ Activate Premium</button>
+        </div>
+      </div>
+    </section>
+  
+  </main>
+
+  <!-- Scripts -->
+  <script src="../core/constants.js"></script>
+  <script src="../core/utils.js"></script>
+  <script src="../core/storage.js"></script>
+  <script src="../core/licensing.js"></script>
+  <script src="../core/refiner.js"></script>
+  <script src="../core/prompt-engine.js"></script>
+  <script src="sidepanel.js"></script>
+</body>
+</html>
